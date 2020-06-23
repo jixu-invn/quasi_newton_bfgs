@@ -1,7 +1,9 @@
-exec('armijo.sci', -1)
-exec('newton.sci', -1)
-exec('function_r.sci', -1)
-exec('BFGS.sci', -1)
+path = get_absolute_file_path('simulation1.sci')
+
+exec(path+'armijo.sci', -1)
+exec(path+'newton.sci', -1)
+exec(path+'function_r.sci', -1)
+exec(path+'BFGS.sci', -1)
 
 x_init = [-1;1]
 p1 = 10

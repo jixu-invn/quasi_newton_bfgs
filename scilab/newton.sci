@@ -1,10 +1,10 @@
-function x= newton(f,p,x)  
+function rx= newton(f,p,x)  
     xk= x
-    [gx,hx]=  numderivative(list(f, p), x, [], [],"blockmat")
+    [gx,hx]=  numderivative(list(f, p), xk, [], [],"blockmat")
     xkk = xk - inv(hx)*gx'
     if xkk - xk < %eps then
-        x = xk;
+        rx = xk;
     else
-        x = newton(f,p,xkk); 
+        rx = newton(f,p,xkk); 
     end
 endfunction

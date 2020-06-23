@@ -1,5 +1,5 @@
 /*
-Pour initializer H = eyes(2,2)
+Pour initializer H = eye(2,2)
 m est un qui est reel dans (0,1)
 x=[-1;1]
 p = 10 ou 100

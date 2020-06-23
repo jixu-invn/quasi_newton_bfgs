@@ -13,8 +13,8 @@ function [rx,i]= BFGS(f,p,x,H,m)
     pk = armijo(f,p,xk,dk,m)
     xkk = xk + pk*dk
     gkk = numderivative(list(f, p), xkk)'
-    
-    if  xkk-xk < %eps  then
+    disp(norm(xkk - xk))
+    if norm(xkk - xk) < 10^4*%eps then
         rx = xk
         i = 0
     else

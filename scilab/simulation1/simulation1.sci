@@ -24,9 +24,13 @@ disp(r2)
 
 H = eye(2,2)
 m = 0.5
-r1 = BFGS(f1,p1,x_init,H,m)
-r2 = BFGS(f1,p2,x_init,H,m)
+[r1,i1] = BFGS(f1,p1,x_init,H,m)
+[r2,i2] = BFGS(f1,p2,x_init,H,m)
 mprintf('la méthode BFGS de la 1ere simulation p=10: %e\n',r1)
 disp(r1)
+disp(i1)
+
 mprintf('la méthode BFGS de la 1ere simulation p=100: %e\n',r2)
 disp(r2)
+disp(i2)
+

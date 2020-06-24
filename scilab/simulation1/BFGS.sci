@@ -4,7 +4,7 @@ m est un qui est reel dans (0,1)
 x=[-1;1]
 p = 10 ou 100
 */
-function [rx,i]= BFGS(f,p,x,H,m)
+function [rx,i,dif]= BFGS(f,p,x,H,m)
 
     Hk = H  
     xk = x
@@ -16,12 +16,14 @@ function [rx,i]= BFGS(f,p,x,H,m)
     //disp(norm(xkk - xk))
     if norm(xkk - xk) < 10^(-9) then
         rx = xk
-        i = 0
+        i = 1
+        dif =list(norm(xkk - xk))
     else
         yk = gkk-gk
         sk = xkk -xk
         Hkk = Hk + yk*yk'/(yk'*sk) - Hk*sk*sk'*Hk/(sk'*Hk*sk)
-        [rx,i] = BFGS(f,p,xkk,Hkk); 
+        [rx,i,dif] = BFGS(f,p,xkk,Hkk); 
         i = i +1
+        dif($+1)= norm(xkk-xk)
     end
 endfunction

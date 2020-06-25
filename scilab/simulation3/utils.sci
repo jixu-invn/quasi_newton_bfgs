@@ -8,13 +8,15 @@ endfunction
 
 /*
 Fonction de la somme de potentiel
+x is a vector of R^3n
 */
 function [result] = sum_v(x)
     result = 0
-    n = size(x)(1)
+    n = size(x)(1)/3
+    
     for i = 1:n-1
         for j = i+1:n
-            result = result + VL_J(x(i, :), x(j, :))
+            result = result + VL_J(x(3*i-2:3*i), x(3*j-2:3*j))
         end
     end
 endfunction

@@ -20,3 +20,19 @@ function [result] = sum_v(x)
         end
     end
 endfunction
+
+/*
+Fonction de penalisation
+x is a vector of R^3n
+*/
+function [result] = g(x)
+    global lambda
+    result = lambda*(x(1)^2+x(2)^2+x(3)^2+x(5)^2+x(6)^2+x(9)^2)
+endfunction
+
+/*
+Fonction de la somme de potentiel avec un terme de penalisation
+*/
+function [result] = sum_v2(x)
+    result = sum_v(x) + g(x)
+endfunction

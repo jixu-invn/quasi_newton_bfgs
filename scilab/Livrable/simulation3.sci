@@ -36,10 +36,13 @@ diffw = ltv(i_w, diff_w)
 
 subplot(2,2,1)
 plot(1:i_a,diffa')
+xtitle( 'BFGS avec Armijo', 'iterations', 'diff')
 subplot(2,2,2)
 plot(1:i_g,diffg')
+xtitle( 'BFGS avec Goldsein', 'iterations', 'diff')
 subplot(2,2,3)
 plot(1:i_w,diffw')
+xtitle( 'BFGS avec Wolfe', 'iterations', 'diff')
 //*/
 
 //* ex3

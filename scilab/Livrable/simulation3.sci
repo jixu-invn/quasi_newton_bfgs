@@ -23,6 +23,13 @@ m_1 = [0.5; 0.9]
 [r_g,i_g,diff_g] = BFGS(sum_v,x_init,H_1,m_1,'goldsein')
 [r_w,i_w,diff_w] = BFGS(sum_v,x_init,H_1,m_1,'wolfe')
 
+mprintf('Le resultat avec armijo:\n')
+disp(sum_v(r_a))
+mprintf('Le resultat avec goldsein:\n')
+disp(sum_v(r_g))
+mprintf('Le resultat avec wolfe:\n')
+disp(sum_v(r_w))
+
 diffa = ltv(i_a, diff_a)
 diffg = ltv(i_g, diff_g)
 diffw = ltv(i_w, diff_w)

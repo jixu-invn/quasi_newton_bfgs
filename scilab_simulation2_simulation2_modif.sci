@@ -1,0 +1,32 @@
+path = get_absolute_file_path('simulation2.sci')
+exec(path+'function2.sci', -1)
+exec(path+'newton2.sci', -1)
+exec(path+'bfgs2.sci', -1)
+exec(path+'generator.sci', -1)
+exec(path+'armijo2.sci', -1)
+exec(path+'ltv.sci', -1)
+
+[t,y,y1]=generator()
+x=[1.2;0.9;4/3*%pi+0.1;0.2]
+[rx1,i1,dif1] = newton2(f2,t,y,0,x)
+[rx1_1,i1_1,dif1_1] = BFGS2(f2,t,y,0,[1;1;1;1],eye(4,4),0.9)
+// Le méthode de Newton est limité par l'intiale donc on utilise bfgs 
+[rx2_1,i2_1,dif2_1] = BFGS2(f2,t,y1,0,[1;1;1;1],eye(4,4),0.9)
+[rx3_1,i3_1,dif3_1] = BFGS2(f2,t,y1,0.1,[1;1;1;1],eye(4,4),0.9)
+[rx3_2,i3_2,dif3_2] = BFGS2(f2,t,y1,0.01,[1;1;1;1],eye(4,4),0.9)
+[rx3_3,i3_3,dif3_3] = BFGS2(f2,t,y1,0.001,[1;1;1;1],eye(4,4),0.9)
+[rx3_4,i3_4,dif3_4] = BFGS2(f2,t,y1,0.0001,[1;1;1;1],eye(4,4),0.9)
+difa3_1 = ltv(i3_1,dif3_1)
+difa3_2 = ltv(i3_2,dif3_2)
+difa3_3 = ltv(i3_3,dif3_3)
+difa3_4 = ltv(i3_4,dif3_4)
+subplot(2,2,1)
+plot(1:i3_1,difa3_1')
+subplot(2,2,2)
+plot(1:i3_2,difa3_2')
+subplot(2,2,3)
+plot(1:i3_3,difa3_3')
+subplot(2,2,4)
+plot(1:i3_4,difa3_4')
+
+

@@ -15,6 +15,10 @@ function [pk] = armijo(f,x,d,m)
     else
         while (p1 > p0)
         pk= pk/2
+        if (pk < 10 ^ (-6))
+            pk = 10 ^ (-6)
+            break
+        end
         p1 = f(x+pk*d)
         p0 = f(x)+m* numderivative(f, x)*d*pk
         end
@@ -32,6 +36,10 @@ function [pk] = goldsein(f,x,d,m1,m2)
     if (p1>p3) then
         while (p1>p3)
         pk= pk/2
+        if (pk < 10 ^ (-6))
+            pk = 10 ^ (-6)
+            break
+        end
         p1 = f(x+pk*d)
         p3 = f(x) + m1* numderivative(f, x)*d*pk
         end
@@ -63,11 +71,15 @@ function [pk] = wolfe(f,x,d,m1,m2)
     if (p1>p2)  then
         while(p1>p2)
         pk= pk/2
+        if (pk < 10 ^ (-6))
+            pk = 10 ^ (-6)
+            break
+        end
         p1 = f(x+pk*d)
         p2= f(x) + m1* numderivative(f, x)*d*pk
         end
-    elseif (p1 < p3)then
-        while(p1 < p3)
+    elseif (p1 < p3 & p1 < p2)then
+        while(p1 < p3 & p1 < p2)
         pk= pk*2
         p1 = f(x+pk*d)
         p3 = m2* numderivative(f, x)*d
